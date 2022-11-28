@@ -60,6 +60,7 @@ def move(dir) :
 
 
 while(True):
+<<<<<<< HEAD
     move("E")
     ataque()
     move("S")
@@ -75,3 +76,8 @@ while(True):
     move("S")
     ataque()
     break
+=======
+    movimentoBasico()
+
+#TESTE
+>>>>>>> b371dc0 (TESTE)
