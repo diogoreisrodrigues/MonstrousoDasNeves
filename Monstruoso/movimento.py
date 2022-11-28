@@ -20,6 +20,7 @@ def movimentoBasico():
 while(True):
     movimentoBasico()
 
+dasdsads
 
 
 #asodhASHASI
