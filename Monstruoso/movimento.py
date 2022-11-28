@@ -64,3 +64,5 @@ while(True):
     movimentoBasico()
 
 #TESTE
+
+#aoishdaoihdaoidhaoi
