@@ -63,3 +63,4 @@ def move() :
 while(True):
     movimentoBasico()
 
+#TESTE
