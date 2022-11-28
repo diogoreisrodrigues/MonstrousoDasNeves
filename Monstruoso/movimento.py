@@ -78,8 +78,11 @@ while(True):
     break
 =======
     movimentoBasico()
+<<<<<<< HEAD
 
 #TESTE
 
 #aoishdaoihdaoidhaoi
 >>>>>>> b371dc0 (TESTE)
+=======
+>>>>>>> 5d3534c (New)
