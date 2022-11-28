@@ -6,7 +6,7 @@ from pybricks.robotics import DriveBase
 # Initialize the EV3 Brick..
 ev3 = EV3Brick()
 
-# Initialize the motors.
+# Initialize the motors..
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 
