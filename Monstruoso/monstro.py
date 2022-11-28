@@ -36,3 +36,4 @@ sleepZombie1 = [] #coordenada do zombie atordoado
 sleepZombie2 = [] #coordenada do zombie atordoado
 sleepTime1 = 2 #numero de turnos que o zombie 1 fica atordoado
 sleepTime2 = 2 #numero de turmos que o zombie 2 fica atordoado
+
