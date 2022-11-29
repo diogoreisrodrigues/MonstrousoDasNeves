@@ -24,9 +24,7 @@ def ataque():
         ev3.speaker.say('take this Zombie')
         gripper_motor.run_until_stalled(400, then=Stop.HOLD, duty_limit=60)
         gripper_motor.run_target(200, -60)
-    if color == Color.RED:
-        ev3.speaker.say('Red')
-    if color == Color.BLUE:
+    elif color == Color.BLUE:
         ev3.speaker.say('Blue') 
         print("teste1")
         
