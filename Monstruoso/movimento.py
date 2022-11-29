@@ -4,7 +4,7 @@ from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from ataques import ataque
 
-# Initialize the EV3 Brick..
+# Initialize the EV3 Brick
 ev3 = EV3Brick()
 
 # Initialize the motors..
