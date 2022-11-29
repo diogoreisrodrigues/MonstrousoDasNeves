@@ -19,20 +19,19 @@ def movimentoBasico():
     robot.turn(90)
 
 def move() : 
-    sound = Sound()
     newCoord = coord
     if(dir == 'N') :
         if(coord[1]>1) :
             robot.turn(180)
-            robot.straight(200)
+            robot.straight(20)
             robot.turn(-180)
             coord[1] = coord[1] -1
-            sound.speak('orait')
+            #sound.speak('orait').
         else:
             print('fora do tabuleiro')
     elif(dir == 'S') :
         if(coord[1] < 6) :
-            robot.straight(200)
+            robot.straight(20)
             sound.speak('ok')
             coord[1] = coord[1] +1
         else:
@@ -40,7 +39,7 @@ def move() :
     elif(dir =='W') :
         if(coord[0]>1) :
             robot.turn(-90)
-            robot.straight(200)
+            robot.straight(20)
             robot.turn(90)
             sound.speak('ok')
             coord[0] = coord[0] -1
@@ -49,14 +48,15 @@ def move() :
     elif(dir == 'E') :
         if(coord[0]<6) :
             robot.turn(90)
-            robot.straight(200)
+            robot.straight(20)
             robot.turn(-90)
-            sound.speak('orait')
+            #sound.speak('orait')
             coord[0] = coord[0] +1
         else:
             print('fora do tabuleiro') 
     else:
-        sound.speak('Erro')
+        print("Erro")
+        #sound.speak('Erro')
     return newCoord
 
 
