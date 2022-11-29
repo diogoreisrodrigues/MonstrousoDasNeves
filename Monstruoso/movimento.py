@@ -26,7 +26,7 @@ def move() :
             robot.straight(420)
             robot.turn(-370)
             coord[1] = coord[1] -1
-            #sound.speak('orait')
+            #sound.speak('orait').
         else:
             print('fora do tabuleiro')
     elif(dir == 'S') :
