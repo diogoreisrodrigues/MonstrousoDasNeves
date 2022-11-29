@@ -1,7 +1,7 @@
 #!/usr/bin/env pybricks-micropython
 
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, GyroSensor
+from pybricks.ev3devices import Motor, GyroSensor, UltrasonicSensor
 from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait
@@ -13,11 +13,11 @@ ev3 = EV3Brick()
 # Initialize the motors.
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
-GyroSensor = GyroSensor(Port.S2)
+UltrasonicSensor = UltrasonicSensor(Port.S4)
 
 coord = [1,1]
 
-robot = DriveBase(left_motor, right_motor, wheel_diameter=120, axle_track=160)
+robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 robot.settings(400,300,300,300)
 
 def move(dir) : 
@@ -27,9 +27,8 @@ def move(dir) :
             robot.turn(380)
             robot.straight(420)
             angulo = GyroSensor.angle() 
-            robot.turn(angulo)
-            GyroSensor.reset_angle(0)
-            coord[1] = coord[1] -1
+            robot.turn(-185)
+            
             #sound.speak('orait').
         else:
             print('fora do tabuleiro')
@@ -44,9 +43,8 @@ def move(dir) :
         if(coord[0]>1) :
             robot.turn(-185)
             robot.straight(420)
-            angulo = GyroSensor.angle()
-            robot.turn(angulo)
-            GyroSensor.reset_angle(0)
+            robot.turn(185)
+            
 
             #sound.speak('ok')
             coord[0] = coord[0] -1
@@ -54,13 +52,9 @@ def move(dir) :
             print('fora do tabuleiro')
     elif(dir == 'E') :
         if(coord[0]<6) :
-            robot.turn(340)
+            robot.turn(185)
             robot.straight(420)
-            angulo = GyroSensor.angle()  
-            robot.turn(angulo)
-            print(angulo)
-            GyroSensor.reset_angle(0)
-            
+            robot.turn(-185)
             #sound.speak('orait')
             coord[0] = coord[0] +1
         else:
@@ -72,24 +66,21 @@ def move(dir) :
 
 
 while(True):
-    move("E")
-    ataque()
-    wait(100)
+    
+    while(coord[0] != 6):
+        move("E")
+        ataque()
+    wait(1000)
     move("S")
     ataque()
-    wait(100)
-    move("E")
-    ataque()
-    wait(100)
+    while(coord[0] != 1):
+        move("W")
+        ataque()
+    wait(1000)
     move("S")
     ataque()
-    wait(100)
-    move("W")
-    ataque()
-    wait(100)
-    move("N")
-    ataque()
-    wait(100)
-    move("S")
-    ataque()
+    while(coord[0] != 6):
+        move("E")
+        ataque()
+    wait(1000)
     break
