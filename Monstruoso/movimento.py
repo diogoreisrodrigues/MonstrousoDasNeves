@@ -6,7 +6,7 @@ from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from ataques import ataque
 
-# Initialize the EV3 Brick
+# Initialize the EV3 Brick....
 ev3 = EV3Brick()
 
 # Initialize the motors.
@@ -64,7 +64,6 @@ def move() :
 
 
 while(True):
-<<<<<<< HEAD
     move("E")
     ataque()
     move("S")
@@ -80,13 +79,7 @@ while(True):
     move("S")
     ataque()
     break
-=======
     movimentoBasico()
-<<<<<<< HEAD
 
 #TESTE
 
-#aoishdaoihdaoidhaoi
->>>>>>> b371dc0 (TESTE)
-=======
->>>>>>> 5d3534c (New)
