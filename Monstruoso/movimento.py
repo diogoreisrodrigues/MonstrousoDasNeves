@@ -3,7 +3,7 @@ from pybricks.ev3devices import Motor
 from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 
-# Initialize the EV3 Brick..
+# Initialize the EV3 Brick....
 ev3 = EV3Brick()
 
 # Initialize the motors.
