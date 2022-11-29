@@ -8,8 +8,11 @@ from ataques import ataque
 
 # Initialize the EV3 Brick
 # Initialize the EV3 Brick...
+# Initialize the EV3 Brick
+# Initialize the EV3 Brick...
 ev3 = EV3Brick()
 
+# Initialize the motors....
 # Initialize the motors....
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
@@ -18,6 +21,12 @@ coord = [1,1]
 
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 
+def movimentoBasico():
+    robot.straight(200)
+    robot.turn(90)
+
+def move() : 
+    sound = Sound()
 def movimentoBasico():
     robot.straight(200)
     robot.turn(90)
@@ -89,5 +98,9 @@ while(True):
     movimentoBasico()
 
 #TESTE
+    movimentoBasico()
 
+#TESTE
+
+#aoishdaoihdaoidhaoi
 #aoishdaoihdaoidhaoi
