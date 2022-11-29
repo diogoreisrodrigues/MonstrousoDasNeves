@@ -8,12 +8,8 @@ from pybricks.tools import wait
 from ataques import ataque
 
 # Initialize the EV3 Brick
-# Initialize the EV3 Brick...
-# Initialize the EV3 Brick
-# Initialize the EV3 Brick...
 ev3 = EV3Brick()
 
-# Initialize the motors....
 # Initialize the motors....
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
@@ -117,8 +113,3 @@ while(True):
 
 #TESTE
     movimentoBasico()
-
-#TESTE
-
-#aoishdaoihdaoidhaoi
-#aoishdaoihdaoidhaoi
