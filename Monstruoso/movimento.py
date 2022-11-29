@@ -2,6 +2,7 @@ from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor
 from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
+from ataques import ataque
 
 # Initialize the EV3 Brick.
 ev3 = EV3Brick()
@@ -11,14 +12,10 @@ left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 
 coord = [1,1]
-dir = "E"
+
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 
-def movimentoBasico():
-    robot.straight(20)
-    robot.turn(90)
-
-def move() : 
+def move(dir) : 
     newCoord = coord
     if(dir == 'N') :
         if(coord[1]>1) :
@@ -61,5 +58,18 @@ def move() :
 
 
 while(True):
-    movimentoBasico()
-
+    move("E")
+    ataque()
+    move("S")
+    ataque()
+    move("E")
+    ataque()
+    move("S")
+    ataque()
+    move("W")
+    ataque()
+    move("N")
+    ataque()
+    move("S")
+    ataque()
+    break
