@@ -1,7 +1,7 @@
 #!/usr/bin/env pybricks-micropython
 
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, GyroSensor
+from pybricks.ev3devices import Motor, GyroSensor,UltrasonicSensor
 from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait
@@ -10,15 +10,17 @@ from ataques import ataque
 # Initialize the EV3 Brick
 ev3 = EV3Brick()
 
-# Initialize the motors....
+# Initialize the motors.....
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
-GyroSensor = GyroSensor(Port.S2)
+#GyroSensor = GyroSensor(Port.S2)
+obstacle_sensor = UltrasonicSensor(Port.S4)
 
 coord = [1,1]
 
 robot = DriveBase(left_motor, right_motor, wheel_diameter=120, axle_track=160)
 robot.settings(400,300,300,300)
+
 
 def movimentoBasico():
     robot.straight(200)
