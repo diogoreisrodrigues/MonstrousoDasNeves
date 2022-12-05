@@ -15,20 +15,17 @@ left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 UltrasonicSensor = UltrasonicSensor(Port.S4)
 
-coord = [1,1]
-
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 robot.settings(400,300,300,300)
 
-def move(dir) : 
+def move(coord, dir) : 
     newCoord = coord
     if(dir == 'N') :
         if(coord[1]>1) :
             robot.turn(380)
             robot.straight(420)
-            angulo = GyroSensor.angle() 
             robot.turn(-185)
-            
+            newCoord[1] = coord[1] -1
             #sound.speak('orait').
         else:
             print('fora do tabuleiro')
@@ -36,7 +33,7 @@ def move(dir) :
         if(coord[1] < 6) :
             robot.straight(420)
             #sound.speak('ok')
-            coord[1] = coord[1] +1
+            newCoord[1] = coord[1] +1
         else:
             print('fora do tabuleiro')    
     elif(dir =='W') :
@@ -44,10 +41,8 @@ def move(dir) :
             robot.turn(-185)
             robot.straight(420)
             robot.turn(185)
-            
-
             #sound.speak('ok')
-            coord[0] = coord[0] -1
+            newCoord[0] = coord[0] -1
         else:
             print('fora do tabuleiro')
     elif(dir == 'E') :
@@ -56,31 +51,10 @@ def move(dir) :
             robot.straight(420)
             robot.turn(-185)
             #sound.speak('orait')
-            coord[0] = coord[0] +1
+            newCoord[0] = coord[0] +1
         else:
             print('fora do tabuleiro') 
     else:
         print("Erro")
         #sound.speak('Erro')
     return newCoord
-
-
-while(True):
-    
-    while(coord[0] != 6):
-        move("E")
-        ataque()
-    wait(1000)
-    move("S")
-    ataque()
-    while(coord[0] != 1):
-        move("W")
-        ataque()
-    wait(1000)
-    move("S")
-    ataque()
-    while(coord[0] != 6):
-        move("E")
-        ataque()
-    wait(1000)
-    break
