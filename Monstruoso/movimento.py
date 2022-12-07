@@ -1,11 +1,11 @@
 #!/usr/bin/env pybricks-micropython
 
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, GyroSensor, UltrasonicSensor
+from pybricks.ev3devices import Motor, GyroSensor, UltrasonicSensor, TouchSensor
 from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait
-from ataques import ataque
+from ataques import ataque, pickGear
 
 # Initialize the EV3 Brick..
 ev3 = EV3Brick()
@@ -15,8 +15,12 @@ left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 UltrasonicSensor = UltrasonicSensor(Port.S4)
 
+hasGear = False
+
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 robot.settings(400,300,300,300)
+
+coord = [1,1]
 
 def move(coord, dir) : 
     newCoord = coord
@@ -58,3 +62,48 @@ def move(coord, dir) :
         print("Erro")
         #sound.speak('Erro')
     return newCoord
+
+def esperaSensorToque():
+	sensorToque = TouchSensor(Port.S1)
+	
+	print('\nPressione o botao para incializar o turno...')
+	while (not sensorToque.pressed()):		
+			if(hasGear): 
+				Sound.tone(1000, 200)
+				wait(100)
+			else:
+				wait(100)
+
+while(True):
+    
+    while(coord[0] != 6):
+        coord = move(coord, "E")
+        print(coord)
+        ataque()
+        pickGear()
+        esperaSensorToque()
+        
+    wait(1000)
+    coord = move(coord, "S")
+    ataque()
+    pickGear()
+    esperaSensorToque()
+    while(coord[0] != 1):
+        coord = move(coord, "W")
+        print(coord)
+        ataque()
+        pickGear()
+        esperaSensorToque()
+    wait(1000)
+    coord = move(coord, "S")
+    ataque()
+    pickGear()
+    esperaSensorToque()
+    while(coord[0] != 6):
+        coord = move(coord, "E")
+        print(coord)
+        ataque()
+        pickGear()
+        esperaSensorToque()
+    wait(1000)
+    break
