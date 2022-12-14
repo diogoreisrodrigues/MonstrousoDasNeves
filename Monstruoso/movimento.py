@@ -3,9 +3,11 @@
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, GyroSensor, UltrasonicSensor, TouchSensor, ColorSensor
 from pybricks.parameters import Port, Color, Stop
+from pybricks.ev3devices import Motor, GyroSensor, UltrasonicSensor, TouchSensor
+from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait
-from ataques import ataque
+from ataques import ataque, pickGear
 
 
 # Initialize the EV3 Brick..
@@ -23,7 +25,9 @@ color_sensor = ColorSensor(Port.S3)
 hasGear = False
 Zombie1 = False
 Zombie2 = False
+UltrasonicSensor = UltrasonicSensor(Port.S4)
 
+hasGear = False
 
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 robot.settings(400,300,300,300)
@@ -37,6 +41,8 @@ def move(coord, dir) :
             robot.turn(380)
             robot.straight(420)
             robot.turn(-380)
+            newCoord[1] = coord[1] -1
+            robot.turn(-185)
             newCoord[1] = coord[1] -1
             #sound.speak('orait').
         else:
@@ -55,6 +61,9 @@ def move(coord, dir) :
             robot.turn(190)
             #sound.speak('ok')
             newCoord[0] = coord[0] -1
+            robot.turn(185)
+            #sound.speak('ok')
+            newCoord[0] = coord[0] -1
         else:
             print('fora do tabuleiro')
     elif(dir == 'E') :
@@ -62,6 +71,7 @@ def move(coord, dir) :
             robot.turn(185)
             robot.straight(420)
             robot.turn(-190)
+            robot.turn(-185)
             #sound.speak('orait')
             newCoord[0] = coord[0] +1
         else:
@@ -135,6 +145,17 @@ def recon():
 
 
 
+def esperaSensorToque():
+	sensorToque = TouchSensor(Port.S1)
+	
+	print('\nPressione o botao para incializar o turno...')
+	while (not sensorToque.pressed()):		
+			if(hasGear): 
+				Sound.tone(1000, 200)
+				wait(100)
+			else:
+				wait(100)
+
 while(True):
     while(coord[0] != 6):
         #recon()
@@ -146,6 +167,16 @@ while(True):
         
     wait(1000)
     #recon()
+    coord = move(coord, "S")
+    
+    while(coord[0] != 6):
+        coord = move(coord, "E")
+        print(coord)
+        ataque()
+        pickGear()
+        esperaSensorToque()
+        
+    wait(1000)
     coord = move(coord, "S")
     ataque()
     pickGear(coord)
@@ -160,6 +191,16 @@ while(True):
     wait(1000)
     recon()
     coord = move(coord, "S")
+    pickGear()
+    esperaSensorToque()
+    while(coord[0] != 1):
+        coord = move(coord, "W")
+        print(coord)
+        ataque()
+        pickGear()
+        esperaSensorToque()
+    wait(1000)
+    coord = move(coord, "S")
     ataque()
     pickGear(coord)
     esperaSensorToque()
@@ -169,6 +210,15 @@ while(True):
         print(coord)
         ataque()
         pickGear(coord)
+        esperaSensorToque()
+    wait(1000)
+    pickGear()
+    esperaSensorToque()
+    while(coord[0] != 6):
+        coord = move(coord, "E")
+        print(coord)
+        ataque()
+        pickGear()
         esperaSensorToque()
     wait(1000)
     break
