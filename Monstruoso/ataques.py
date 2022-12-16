@@ -18,8 +18,9 @@ color_sensor = ColorSensor(Port.S3)
 
 def ataque():
     color = color_sensor.color()
+
     #if color == Color.GREEN:1
     gripper_motor.run_until_stalled(400, then=Stop.HOLD, duty_limit=60)
     gripper_motor.run_target(200, -50)
     print("teste1")
-        
+       

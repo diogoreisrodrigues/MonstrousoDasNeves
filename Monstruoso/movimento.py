@@ -9,10 +9,12 @@ from pybricks.tools import wait
 from ataques import ataque
 
 
+
 # Initialize the EV3 Brick..
+
 ev3 = EV3Brick()
 
-# Initialize the motors.
+# Initialize the motors....
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 UltrasonicSensor = UltrasonicSensor(Port.S4)
@@ -32,6 +34,7 @@ robot.settings(405,300,300,300)
 coord = [1,1]
 
 def move(coord, dir) : 
+
     newCoord = coord
     if(dir == 'N') :
         if(coord[1]>1) :
@@ -290,4 +293,4 @@ while(True):
         esperaSensorToque()
 
     break
-    
+
